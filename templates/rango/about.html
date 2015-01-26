@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+
+    <head>
+        <title>Rando</title>
+    </head>
+
+    <body>
+        <h1>About</h1>
+        <p>{{ about_message }}</p><br />
+        <a href="/rango/">Back</a><br />
+        <img width="300" src="{% static "images/me-on-a-bus.jpg" %}" alt="This is me on a bus" /> <!-- New line -->
+    </body>
+</html>
