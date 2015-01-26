@@ -33,7 +33,7 @@ def populate():
         title="Learn Python in 10 Minutes",
         url="http://www.korokithakis.net/tutorials/python/")
 
-    django_cat = add_cat("Django"32,16)
+    django_cat = add_cat("Django",32,16)
 
     add_page(cat=django_cat,
         title="Official Django Tutorial",
@@ -60,7 +60,7 @@ def populate():
     # Print out what we have added to the user.
     for c in Category.objects.all():
         for p in Page.objects.filter(category=c):
-            print "- {0;} - {1}".format(str(c), str(p))
+            print "- {0} - {1}".format(str(c), str(p))
 
 def add_page(cat, title, url, views=0):
     p = Page.objects.get_or_create(category=cat, title=title, url=url, views=views)[0]
