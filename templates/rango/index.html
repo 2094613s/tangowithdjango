@@ -18,5 +18,18 @@
             <strong>There are no categories present.</strong>
        {% endif %}
 
+        <h2>Top Five</h2>
+        {% if topfive %}
+            <ul>
+                {% for item in topfive %}
+                <!-- Following line changed to add an HTML hyperlink -->
+                <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ul>
+       {% else %}
+            <strong>Top 5 is unavailable.</strong>
+       {% endif %}
+    <br/><br/>
+    <a href="/rango/about/">About me</a>
     </body>
 </html>
