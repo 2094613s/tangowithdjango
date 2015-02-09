@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Rango</title>
-    </head>
+{% extends 'base.html' %}
 
-    <body>
+{% load staticfiles %}
+
+{% block title %}
+{% if user.is_authenticated %}
+Rango says... hello {{ user.username }}!
+{% else %}
+Rango says... hello world!
+{% endif %}
+{% endblock %}
+
+{% block body_block %}
+
         {% if user.is_authenticated %}
         <h1>Rango says... hello {{ user.username }}!</h1>
         {% else %}
@@ -13,28 +20,22 @@
         {% if categories %}
             <ul>
                 {% for category in categories %}
-                <!-- Following line changed to add an HTML hyperlink -->
-                <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
+                <li><a href="{% url 'category'  category.slug %}">{{ category.name }}</a></li>
                 {% endfor %}
             </ul>
        {% else %}
             <strong>There are no categories present.</strong>
        {% endif %}
        {% if user.is_authenticated %}
-        <br/><a href="/rango/add_category/">Add a New Category</a><br /><br/>
+        <br/><a href="{% url 'add_category' %}">Add a New Category</a><br /><br/>
         {% endif %}
         {% if user.is_authenticated %}
-        <a href="/rango/restricted/">Restricted Page</a><br />
-        <a href="/rango/logout/">Logout</a><br />
-        {% else %}
-        <a href="/rango/register/">Register Here</a><br />
-        <a href="/rango/login/">Login</a><br />
+        <a href="{% url 'restricted' %}">Restricted Page</a><br />
         {% endif %}
         <h2>Top Five</h2>
         {% if topfive %}
             <ul>
                 {% for item in topfive %}
-                <!-- Following line changed to add an HTML hyperlink -->
                 <li><a href="{{ item.url }}">{{ item.title }}</a></li>
                 {% endfor %}
             </ul>
@@ -42,6 +43,4 @@
             <strong>Top 5 is unavailable.</strong>
        {% endif %}
     <br/><br/>
-    <a href="/rango/about/">About me</a>
-    </body>
-</html>
+{% endblock %}

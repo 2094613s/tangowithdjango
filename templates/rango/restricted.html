@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Restricted Site{% endblock %}
+
+{% block body_block %}
+        <p>Since you're logged in, you can see this text!</p><br />
+        <a href="{% url 'index' %}">Back</a><br />
+{% endblock %}

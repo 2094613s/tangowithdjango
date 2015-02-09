@@ -27,7 +27,7 @@ def index(request):
 
 @login_required
 def restricted(request):
-    return HttpResponse("Since you're logged in, you can see this text!")
+    return render(request, 'rango/restricted.html', {})
 
 def about(request):
     context_dict = {'about_message':"This tutorial has been put together by Akos Szente, 2094613s"}
