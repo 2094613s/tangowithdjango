@@ -5,9 +5,13 @@
 {% block title %}About{% endblock %}
 
 {% block body_block %}
+    <div class="page-header">
         <h1>About</h1>
+    </div>
+    <div>
         <p>{{ about_message }}</p><br />
         <p> visits: {{ visits }}</p><br/>
         <a href="{% url 'index' %}">Back</a><br />
         <img width="300" src="{% static "images/me-on-a-bus.jpg" %}" alt="This is me on a bus" /> <!-- New line -->
+    </div>
 {% endblock %}
