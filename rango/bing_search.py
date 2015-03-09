@@ -3,7 +3,7 @@ import urllib, urllib2
 
 # Add your BING_API_KEY
 
-BING_API_KEY = 'hedpukWyFSmZovlM/m8U6wEIT4NqRPH34AoTnK/YNeM'
+BING_API_KEY = ''
 
 def run_query(search_terms):
     # Specify the base
