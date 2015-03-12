@@ -89,7 +89,14 @@ def category(request, category_name_slug):
         pass
 
     if not context_dict['query']:
-        context_dict['query'] = category.name
+        try:
+            context_dict['query'] = category.name
+            context_dict['notfound'] = False
+        except:
+            context_dict['notfound'] = True
+            pass
+
+
 
     return render(request, 'rango/category.html', context_dict)
 
@@ -134,6 +141,7 @@ def add_page(request, category_name_slug):
                 page.views = 0
                 page.save()
                 # probably better to use a redirect here.
+                request.method = 'GET'
                 return category(request, category_name_slug)
         else:
             print form.errors
